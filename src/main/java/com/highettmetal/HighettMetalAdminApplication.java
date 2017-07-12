@@ -1,4 +1,4 @@
-package com.rodmccutcheon;
+package com.highettmetal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

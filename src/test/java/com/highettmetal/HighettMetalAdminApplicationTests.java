@@ -1,4 +1,4 @@
-package com.rodmccutcheon;
+package com.highettmetal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
