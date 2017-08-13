@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head lang="en">
+
     <title>Highett Metal Admin</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
 </head>
 <body>
-<h1>Hello World</h1>
+    <!--/*/ <th:block th:include="fragments/navbar :: navbar"></th:block> /*/-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--/*/ <th:block th:include="fragments/sidebar :: sidebar"></th:block> /*/-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div class="jumbotron">
+                    <div class="row text-center">
+                        <h1 class="display-3">Highett Metal Admin</h1>
+                        <p class="lead">Choose an option from the left menu to get started.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
