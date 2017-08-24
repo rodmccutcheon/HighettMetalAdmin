@@ -3,6 +3,7 @@ package com.highettmetal.controllers;
 import com.highettmetal.configuration.SecurityConfiguration;
 import com.highettmetal.domain.BinType;
 import com.highettmetal.services.BinTypeService;
+import com.highettmetal.services.StorageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class BinTypeControllerTest {
 
     @MockBean
     BinTypeService binTypeServiceMock;
+
+    @MockBean
+    StorageService storageServiceMock;
 
     @Test
     public void listAllBinTypes_shouldReturnListOfBinTypes() throws Exception {
@@ -68,7 +72,7 @@ public class BinTypeControllerTest {
     public void saveBinType_validBinType_shouldSaveAndRedirect() throws Exception {
         mockMvc.perform(post("/binTypes").contentType(MediaType.APPLICATION_FORM_URLENCODED))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/binTypes/0"));
+                .andExpect(view().name("redirect:/binTypes"));
         verify(binTypeServiceMock, times(1)).saveBinType(isA(BinType.class));
         verifyNoMoreInteractions(binTypeServiceMock);
     }
@@ -77,7 +81,7 @@ public class BinTypeControllerTest {
     public void deleteBinType_validBinType_shouldDeleteAndRedirect() throws Exception {
         mockMvc.perform(get("/binTypes/delete/{id}", 1L))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/binTypes/"));
+                .andExpect(view().name("redirect:/binTypes"));
         verify(binTypeServiceMock, times(1)).deleteBinType(1L);
         verifyNoMoreInteractions(binTypeServiceMock);
     }

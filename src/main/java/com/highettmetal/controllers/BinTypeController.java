@@ -51,7 +51,7 @@ public class BinTypeController {
     public String save(@RequestParam("file") MultipartFile file, BinType binType) {
         storageService.store(Paths.get(servletContext.getRealPath("/")), file);
         binTypeService.saveBinType(binType);
-        return "redirect:/binTypes/" + binType.getId();
+        return "redirect:/binTypes" + binType.getId();
     }
 
     @GetMapping("/edit/{id}")
@@ -63,6 +63,6 @@ public class BinTypeController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable long id) {
         binTypeService.deleteBinType(id);
-        return "redirect:/binTypes/";
+        return "redirect:/binTypes";
     }
 }

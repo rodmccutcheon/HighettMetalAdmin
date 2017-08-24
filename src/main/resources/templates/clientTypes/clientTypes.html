@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <title>Highett Metal Client Types</title>
+
+    <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+
+</head>
+<body>
+<!--/*/ <th:block th:include="fragments/navbar :: navbar"></th:block> /*/-->
+<div class="container-fluid">
+    <div class="row">
+        <!--/*/ <th:block th:include="fragments/sidebar :: sidebar"></th:block> /*/-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Client Types</h1>
+            <div th:if="${not #lists.isEmpty(clientTypes)}" class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="clientType : ${clientTypes}">
+                        <td th:text="${clientType.id}"><a href="/clientTypes/${clientType.id}">Id</a></td>
+                        <td th:text="${clientType.level}">Name</td>
+                        <td>
+                            <a th:href="${'/clientTypes/' + clientType.id}">View</a>
+                            <a th:href="${'/clientTypes/edit/' + clientType.id}">Edit</a>
+                            <a th:href="${'/clientTypes/delete/' + clientType.id}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -45,7 +45,7 @@ public class ClientController {
     @PostMapping
     public String save(Client client) {
         clientService.saveClient(client);
-        return "redirect:/clients/" + client.getId();
+        return "redirect:/clients" + client.getId();
     }
 
     @GetMapping("/{id}")
@@ -65,6 +65,6 @@ public class ClientController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         clientService.deleteClient(id);
-        return "redirect:/clients/";
+        return "redirect:/clients";
     }
 }
