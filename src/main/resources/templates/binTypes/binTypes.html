@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <title>Highett Metal Bin Types</title>
+
+    <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+
+</head>
+<body>
+<!--/*/ <th:block th:include="fragments/navbar :: navbar"></th:block> /*/-->
+<div class="container-fluid">
+    <div class="row">
+        <!--/*/ <th:block th:include="fragments/sidebar :: sidebar"></th:block> /*/-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Bin Types</h1>
+            <div th:if="${not #lists.isEmpty(binTypes)}" class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="binType : ${binTypes}">
+                        <td th:text="${binType.id}"><a href="/binTypes/${binType.id}">Id</a></td>
+                        <td th:text="${binType.name}">Name</td>
+                        <td>
+                            <a th:href="${'/binTypes/' + binType.id}">View</a>
+                            <a th:href="${'/binTypes/edit/' + binType.id}">Edit</a>
+                            <a th:href="${'/binTypes/delete/' + binType.id}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

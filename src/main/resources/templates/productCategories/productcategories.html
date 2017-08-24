@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Highett Metal Clients</title>
+
+    <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.delete').on('click', function(e) {
+                e.preventDefault();
+                var deleteLink = $(this);
+                if (confirm("Are you sure you wish to delete this Product Category and all associated Products?")) {
+                    $.ajax({
+                        url: this.href,
+                        type: 'DELETE',
+                        success: function () {
+                            // Remove the parent tr element
+                            deleteLink.parent().parent().remove();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--/*/ <th:block th:include="fragments/navbar :: navbar"></th:block> /*/-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--/*/ <th:block th:include="fragments/sidebar :: sidebar"></th:block> /*/-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Product Categories</h1>
+                <form class="form-horizontal" th:object="${productCategory}" th:action="@{/productCategories}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" th:field="*{name}" placeholder="Product Category name"/>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">Add</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <br/>
+                <div th:if="${not #lists.isEmpty(productCategories)}" class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="productCategory : ${productCategories}">
+                                <td th:text="${productCategory.id}"><a href="/productCategories/${productCategory.id}">Id</a></td>
+                                <td th:text="${productCategory.name}">Name</td>
+                                <td th:text="${productCategory.position}">Position</td>
+                                <td>
+                                    <a th:href="${'/productCategories/' + productCategory.id}">Edit</a>
+                                    <a th:href="${'/productCategories/' + productCategory.id}" class="delete">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

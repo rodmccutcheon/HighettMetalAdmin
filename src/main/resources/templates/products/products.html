@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Highett Metal Clients</title>
+
+    <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#productCategories').on('change', function () {
+                $.get("/productCategories/" + this.value, function(data) {
+                    $('#products').html(data);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--/*/ <th:block th:include="fragments/navbar :: navbar"></th:block> /*/-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--/*/ <th:block th:include="fragments/sidebar :: sidebar"></th:block> /*/-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Products</h1>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="input-group">
+                            <select id="productCategories" th:field="*{productCategories}" class="form-control">
+                                <option value="default">Select a Product Category</option>
+                                <option th:each="productCategory : ${productCategories}" th:value="${productCategory.id}" th:text="${productCategory.name}" />
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="products">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

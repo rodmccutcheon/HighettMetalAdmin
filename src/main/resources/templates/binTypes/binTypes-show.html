@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <title>Highett Metal Bin Types</title>
+
+    <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
+<body>
+<!--/*/ <th:block th:include="fragments/navbar :: navbar"></th:block> /*/-->
+<div class="container-fluid">
+    <div class="row">
+        <!--/*/ <th:block th:include="fragments/sidebar :: sidebar"></th:block> /*/-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Bin Type Details</h1>
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">BinType Id:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${binType.id}">Client Id</p></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Name:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${binType.name}">Name</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Size:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${binType.size}">Name</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Image:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${binType.imagePath}">Name</p>
+                        </div>
+                    </div>
+                    <img th:src="${'/uploads/' + binType.imagePath}" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

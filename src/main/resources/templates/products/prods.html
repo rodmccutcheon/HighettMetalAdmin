@@ -1,0 +1,19 @@
+<div th:if="${not #lists.isEmpty(productCategory.products)}" class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${productCategory.products}">
+            <td th:text="${product.id}"><a href="/products/${product.id}">Id</a></td>
+            <td th:text="${product.name}">Name</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:unless="${not #lists.isEmpty(productCategory.products)}">
+    <p>No products found.</p>
+</div>

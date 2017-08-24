@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <title>Highett Metal Clients</title>
+
+    <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+
+</head>
+<body>
+    <!--/*/ <th:block th:include="fragments/navbar :: navbar"></th:block> /*/-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--/*/ <th:block th:include="fragments/sidebar :: sidebar"></th:block> /*/-->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Clients</h1>
+                <div th:if="${not #lists.isEmpty(clients)}" class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Business Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="client : ${clients}">
+                                <td th:text="${client.id}"><a href="/clients/${client.id}">Id</a></td>
+                                <td th:text="${client.code}">Code</td>
+                                <td th:text="${client.name}">Name</td>
+                                <td th:text="${client.businessName}">Business Name</td>
+                                <td>
+                                    <a th:href="${'/clients/' + client.id}">View</a>
+                                    <a th:href="${'/clients/edit/' + client.id}">Edit</a>
+                                    <a th:href="${'/clients/delete/' + client.id}">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

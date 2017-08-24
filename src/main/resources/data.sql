@@ -5,9 +5,9 @@ INSERT INTO clienttypes (level, discount, position) VALUES
   ('Level 4 / 25%', 20, 4),
   ('Level 5 Public 30%', 30, 5);
 
-INSERT INTO clients (code, name) VALUES
-  ('CODE123', 'Rod'),
-  ('CODE456', 'Suby');
+INSERT INTO clients (code, name, email, username, password) VALUES
+  ('CODE123', 'Rod', 'rodmccutcheon@gmail.com', 'rod', 'test123'),
+  ('CODE456', 'Suby', 'suby@example.com', 'suby', 'suby123');
 
 INSERT INTO productcategories (name, position) VALUES
   ('Copper', 1),
@@ -27,7 +27,7 @@ INSERT INTO products (productcategoryid, name, code, price, description, positio
   (1, 'Candy', 'Cu Candy', 6.67, 'Clean Copper tube, wire and sheet off cuts.', 2);
 
 INSERT INTO bintypes (name, size, image_path, position) VALUES
-  ('Type 211', '1000mm x 1000mm x 1850mm', 'Bin_type-211-7116.jpg', 1),
+  ('Type 211', '1000mm x 1000mm x 1850mm', 'type-211-6350.jpg', 1),
   ('Type 35m3 Dino', '2.4m x 2.4m x 7m', 'type-35m3-dino-9492.jpg', 2),
   ('Type 20m3 Dino', '2m x 2m x 5m', 'type-20m3-dino-3621.jpg', 3),
   ('Type 6x4', '1300mm x 2160mm x 1200mm', 'type-6x4-3336.jpg', 4),
